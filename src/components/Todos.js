@@ -35,16 +35,15 @@ const mapDispatchToProps = (dispatch) => {
 
 const Todos = (props) => {
     const [todo, setTodo] = useState("");
-   
+
     const classes = useStyles();
     const handleChange = (e) => {
         setTodo(e.target.value)
-       
-       
+
     }
-    function getId () {
+    function getId() {
         return props.todos.length ? props.todos[props.todos.length - 1].id + 1 : 1
-      }
+    }
     return (
         <div className="addTodos">
             <Container maxWidth="sm" className={classes.root}>
@@ -55,8 +54,8 @@ const Todos = (props) => {
                     </Grid>
                     <Grid item md={12}>
                         <Button className={classes.button} variant="contained" color="primary" onClick={() => props.addTodo({
-                            
-                            id: getId (),
+
+                            id: getId(),
                             item: todo,
                         })}>Add
                         </Button>
@@ -70,6 +69,6 @@ const Todos = (props) => {
 
 
     )
-    
+
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);

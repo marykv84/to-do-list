@@ -9,18 +9,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const mapStateToProps = (state) => {
     return {
-        todos : state,
+        todos: state,
     };
 };
 
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-       
-        removeTodo:(id)=> dispatch(removeTodos(id)),
-        updateTodo:(obj)=> dispatch(updateTodos(obj)),
+const mapDispatchToProps = (dispatch) => {
+    return {
 
-
+        removeTodo: (id) => dispatch(removeTodos(id)),
+        updateTodo: (obj) => dispatch(updateTodos(obj)),
 
     }
 }
@@ -38,23 +36,23 @@ const DisplayTodos = (props) => {
             <List>
                 {
                     props.todos.length > 0 ?
-                    props.todos.map(item => {
-                    
-                        return(
-                            <TodoItem
-                            key = {item.id}
-                            item = {item}
-                            removeTodo = {props.removeTodo}
-                            updateTodo = {props.updateTodo}
+                        props.todos.map(item => {
 
-                            />
-                        );
-                    })
-                    : null
+                            return (
+                                <TodoItem
+                                    key={item.id}
+                                    item={item}
+                                    removeTodo={props.removeTodo}
+                                    updateTodo={props.updateTodo}
+
+                                />
+                            );
+                        })
+                        : null
                 }
             </List>
 
         </Container>
     )
 }
-export default connect(mapStateToProps,mapDispatchToProps)(DisplayTodos)
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayTodos)
