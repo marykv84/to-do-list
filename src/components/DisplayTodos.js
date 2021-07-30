@@ -5,6 +5,8 @@ import TodoItem from './TodoItem';
 import List from '@material-ui/core/List';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+
 
 
 const mapStateToProps = (state) => {
@@ -51,7 +53,14 @@ const DisplayTodos = (props) => {
                         : null
                 }
             </List>
-
+            
+            <Divider variant="middle" />
+            <div>
+        
+        {
+        props.todos.length === 0 ?  "No Task" : props.todos.length + " Tasks"
+        }
+        </div>
         </Container>
     )
 }

@@ -8,6 +8,8 @@ const addTodoReducer = createSlice({
         //add
         addTodos :(state,action) => {
             state.push(action.payload);
+            
+
             return state;
         },
         //delete
@@ -18,6 +20,7 @@ const addTodoReducer = createSlice({
         updateTodos : (state,action) =>{
             return state.map(todo => {
                 if(todo.id === action.payload.id){
+                    
                     return {
                         ...todo,
                         item : action.payload.item,
@@ -26,6 +29,8 @@ const addTodoReducer = createSlice({
                 return todo;
             })
         },
+        
+        
     },
 });
 export const {addTodos , removeTodos,updateTodos} = addTodoReducer.actions;

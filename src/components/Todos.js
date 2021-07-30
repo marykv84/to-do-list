@@ -5,7 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles({
     root: {
@@ -17,9 +18,17 @@ const useStyles = makeStyles({
     },
     button: {
         marginTop: 16
+    },
+    textField:{
+        marginRight:16,
+        width:350,
+
+
     }
 });
+
 const mapStateToProps = (state) => {
+    
     return {
         todos: state,
     };
@@ -35,12 +44,20 @@ const mapDispatchToProps = (dispatch) => {
 
 const Todos = (props) => {
     const [todo, setTodo] = useState("");
-
+    const [date , setdate] = useState("2021-07-29")
     const classes = useStyles();
+
     const handleChange = (e) => {
         setTodo(e.target.value)
 
+
     }
+    const handleChanged = (e) => {
+        setdate(e.target.value)
+
+
+    }
+
     function getId() {
         return props.todos.length ? props.todos[props.todos.length - 1].id + 1 : 1
     }
@@ -49,14 +66,19 @@ const Todos = (props) => {
             <Container maxWidth="sm" className={classes.root}>
                 <Grid container alignItems="center">
                     <Grid item md={12}>
-                        <TextField onChange={(e) => handleChange(e)} className="todo-input" value={todo}
-                            id="outlined-basic" fullWidth label="Enter Task Name" multiline variant="outlined" />
+                        <TextField onChange={(e) => handleChange(e)} className={classes.textField} value={todo}
+                            id="standard-basic" fullWidth label="Enter Task Name" multiline variant="standard" />
+                        <TextField id="date"  label="DueDate"  type="date" value={date} onChange={(e) => handleChanged(e)} />
                     </Grid>
+
                     <Grid item md={12}>
                         <Button className={classes.button} variant="contained" color="primary" onClick={() => props.addTodo({
 
                             id: getId(),
                             item: todo,
+                            date: date,
+                            
+
                         })}>Add
                         </Button>
                     </Grid>
